@@ -1,4 +1,19 @@
-#Sat Jun 16 15:57:38 EEST 2018
-base.0=/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/transforms/dexMerger/debug/0
+#Sun Jun 17 17:15:38 EEST 2018
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex
+base.5=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34
+base.4=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\32
+base.3=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\35
+base.2=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\30
+base.1=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\33
+base.0=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31
+file.5=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34\\classes.dex
+file.4=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\32\\classes.dex
+file.3=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\35\\classes.dex
+file.2=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\30\\classes.dex
+file.1=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\33\\classes.dex
+file.0=C\:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31\\classes.dex
