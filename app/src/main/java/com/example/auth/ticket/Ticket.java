@@ -102,7 +102,7 @@ public class Ticket {
      */
     public boolean issue(int daysValid, int uses) throws GeneralSecurityException {
         boolean res;
-        daysValid = 60;
+        daysValid = 600;
         // Authenticate
         res = utils.authenticate(authenticationKey);
         if (!res) {
@@ -115,7 +115,17 @@ public class Ticket {
         utils.eraseMemory();
 
         //write counter
-        remainingUses += uses;
+        int counter = getMonoCounter(readCounter());
+
+        if (counter % (uses+1) == 0){
+//            infoToShow = "You are out of rides";
+            remainingUses = uses;
+        }else{
+            for(int i = 0; i < ((uses + 1) - (counter % (uses + 1))); i++){
+                writeIncrement();
+            }
+            remainingUses = uses;
+        }
 
         // Update and write expiryTime
         validateCard();
@@ -164,24 +174,26 @@ public class Ticket {
             infoToShow = "Card has expired";
             return false;
         }else {
-            // Increment counter by 1
-            writeIncrement();
 
-//            utils.readPages(41,1,mcounter,0);
-//        int iMcounter = byteToInt(mcounter);
-//        System.out.println(iMcounter);
+            int counter = getMonoCounter(readCounter());
 
-            int expiryDateInt = byteToInt(this.bextime);
-
-            int timeDiff = expiryDateInt - getCurrentTime();
-
-            writeHMAC();
-
-            if (remainingUses > 0 ){
-                infoToShow = "Seconds left to use the card: " + String.valueOf(timeDiff) + "\n" + "Rides remaining: " + remainingUses;
-            } else{
+            if (counter % (uses+1) == uses){
                 infoToShow = "You are out of rides";
                 remainingUses = 0;
+            }else {
+
+                // Increment counter by 1
+                writeIncrement();
+                counter++;
+                remainingUses = uses - counter % (uses + 1);
+
+                int expiryDateInt = byteToInt(this.bextime);
+
+                int timeDiff = expiryDateInt - getCurrentTime();
+
+                writeHMAC();
+
+                infoToShow = "Seconds left to use the card: " + String.valueOf(timeDiff) + "\n" + "Rides remaining: " + remainingUses;
             }
         }
 
@@ -208,7 +220,7 @@ public class Ticket {
 
         mcounter[0] = (byte) 1;
         ul.writeBinary(41, mcounter, 0);
-        remainingUses-=1;
+//        remainingUses-=1;
 
 //        ByteBuffer wrapped = ByteBuffer.wrap(cnt); // big-endian by default
 //        int cnt_int = wrapped.getInt();
@@ -242,7 +254,9 @@ public class Ticket {
     }
 
 
-
+    private int getMonoCounter(byte[] counterValue){
+        return (counterValue[0] & 0xFF) << 0 | (counterValue[1] & 0xFF) << 8 | (counterValue[2] & 0xFF) << 16;
+    }
 
 
 
@@ -270,9 +284,7 @@ public class Ticket {
         int expiryDateInt = byteToInt(expiryDate);
 
         int timeDiff = expiryDateInt - getCurrentTime();
-
-
-
+        int counterCurent = getMonoCounter(readCounter());
         isExpired = validateExpiryDate();
         if (isExpired) {
             Utilities.log("Card expired", true);
@@ -282,7 +294,7 @@ public class Ticket {
             infoToShow = "Seconds left to use the card: " + String.valueOf(timeDiff) + "\n" + "Rides remaining: " + remainingUses;
             }
 
-        infoToShow = infoToShow + shmac;
+        infoToShow = infoToShow + "\n" + "Current counter = " + counterCurent;
         return true;
     }
 
@@ -357,6 +369,12 @@ public class Ticket {
         byte[] buid = new byte[4*uid_len];
         utils.readPages(uid_page_no, uid_len, buid, 0);
         return buid;
+    }
+
+    private byte[] readCounter(){
+        byte[] counterValue = new byte[4];
+        utils.readPages(41, 1, counterValue, 0);
+        return counterValue;
     }
 
     private void readAll(){
