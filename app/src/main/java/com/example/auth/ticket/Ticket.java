@@ -100,7 +100,7 @@ public class Ticket {
      */
     public boolean issue(int daysValid, int uses) throws GeneralSecurityException {
         boolean res;
-
+        daysValid = 60;
         // Authenticate
         res = utils.authenticate(authenticationKey);
         if (!res) {
@@ -269,7 +269,7 @@ public class Ticket {
         }
 //        byte[] cnt_b = readRemain();
         this.readAll();
-
+        String shmac = bytesToHex(this.bhmac);
 
         byte [] expiryDate = this.bextime;
 
@@ -287,7 +287,7 @@ public class Ticket {
 
             }
 
-
+        infoToShow = infoToShow + shmac;
         return true;
     }
 
@@ -313,17 +313,23 @@ public class Ticket {
 
     private byte[] generateHMAC() {
         // Read the pages from the card
-        byte[] integritiedData = new byte[4*(extime_len+counter_len+uid_len)];
+        byte[] integritiedData = new byte[4*(extime_len + counter_len + uid_len)];
         int db = 0;
-        System.arraycopy(buid, 0, integritiedData, db, uid_len);
-        db += uid_len;
-        System.arraycopy(bcounter, 0, integritiedData, db, uid_len);
-        db += uid_len;
-        System.arraycopy(bextime, 0, integritiedData, db, extime_len);
-        db += uid_len;
+        System.arraycopy(buid, 0, integritiedData, db, uid_len*4);
+        Utilities.log(bytesToHex(buid), false);
+        db += uid_len*4;
+        System.arraycopy(bcounter, 0, integritiedData, db, counter_len*4);
+        Utilities.log(bytesToHex(bcounter), false);
+        db += counter_len*4;
+        System.arraycopy(bextime, 0, integritiedData, db, extime_len*4);
+        Utilities.log(bytesToHex(bextime), false);
+        db += uid_len*4;
         // Generate HMAC
         try {
             byte[] hmac = macAlgorithm.generateMac(integritiedData);
+            Utilities.log("HMACHMACHMACHMACHMACHMACHMACHMACHMACHMACHMAC", false);
+            Utilities.log(bytesToHex(integritiedData), false);
+            Utilities.log(bytesToHex(hmac), false);
             return hmac;
         }catch (java.security.GeneralSecurityException e){
             Utilities.log("security exception", true);
@@ -359,9 +365,19 @@ public class Ticket {
     }
 
     private void readAll(){
+        Utilities.log("===================Readall=================", false);
         this.bcounter = this.readRemain();
+        Utilities.log("counter", false);
+        Utilities.log(bytesToHex(bcounter), false);
         this.buid = this.readUID();
+        Utilities.log("uid", false);
+        Utilities.log(bytesToHex(buid), false);
         this.bhmac = readHMAC();
+        Utilities.log("hmac", false);
+        Utilities.log(bytesToHex(bhmac), false);
         this.bextime = readTimeRem();
+        Utilities.log("extime", false);
+        Utilities.log(bytesToHex(bextime), false);
+        Utilities.log("---------------------Readall---------------------", false);
     }
 }
