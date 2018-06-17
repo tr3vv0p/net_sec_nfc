@@ -1,10 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-eu/values-eu.xml",
+            "outputFile": "C:\\home\\dmitrea1\\net_sec\\CS-E4300_ANDROID\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu\\values-eu.xml",
             "map": [
                 {
-                    "source": "/home/dmitrea1/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a621b6c6ca3e81f1cf1d8e2a89af98e/res/values-eu/values-eu.xml",
+                    "source": "C:\\home\\dmitrea1\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\8a621b6c6ca3e81f1cf1d8e2a89af98e\\res\\values-eu\\values-eu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\pogopa\\Documents\\CS-E4300_ANDROID\\qwer\\net_sec_nfc\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu\\values-eu.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\pogopa\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\fa4118fb155abe1158bb40880573a832\\res\\values-eu\\values-eu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

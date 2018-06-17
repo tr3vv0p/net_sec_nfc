@@ -1,90 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="25"
+    api-level="27"
     build-mode="COLD"
-    density="xxhdpi"
+    density="420dpi"
     format="10"
-    ir-eligibility="METHOD_DELETED"
-    plugin-version="3.1.3"
-    timestamp="1529167405665"
-    token="-1472575710229869270"
+    ir-eligibility="COMPATIBLE"
+    plugin-version="3.0.0"
+    timestamp="1529248797877"
+    token="3697914683316216113"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="158" />
+        duration="464" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="5" />
+        duration="8" />
     <task
         name="verifier"
-        duration="2" />
+        duration="7" />
 
     <artifact
-        location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1529158441021"
+        timestamp="1529246133481"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\outputs\apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1529161152430"
+        timestamp="1529248797877"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="METHOD_DELETED"
-        timestamp="1529167405665"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/dmitrea1/net_sec/CS-E4300_ANDROID/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="C:\Users\pogopa\Documents\CS-E4300_ANDROID\qwer\net_sec_nfc\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
     </build>
 
