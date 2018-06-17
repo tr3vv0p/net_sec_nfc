@@ -2,6 +2,8 @@ package com.example.auth.ticket;
 
 import com.example.auth.app.ulctools.Commands;
 import com.example.auth.app.ulctools.Utilities;
+
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.security.GeneralSecurityException;
 import java.util.Date;
@@ -113,7 +115,7 @@ public class Ticket {
         utils.eraseMemory();
 
         //write counter
-        remainingUses = uses;
+        remainingUses += uses;
 
         // Update and write expiryTime
         validateCard();
@@ -123,6 +125,7 @@ public class Ticket {
         int expirydate = writeExpiryTime();
         System.out.print(expirydate);
         // Write new HMAC
+//        writeHMAC();
 
         // Set information to show for the user
         infoToShow = "Reinitialized";
@@ -161,20 +164,18 @@ public class Ticket {
             infoToShow = "Card has expired";
             return false;
         }else {
+            // Increment counter by 1
+            writeIncrement();
 
-            byte[] cnt_b = this.bcounter;
-            int cnt = writeIncrement(cnt_b, 1);
+//            utils.readPages(41,1,mcounter,0);
+//        int iMcounter = byteToInt(mcounter);
+//        System.out.println(iMcounter);
 
-
-//            byte[] cnt_b = readRemain();
-//            int cnt = writeIncrement(cnt_b, 1);
             int expiryDateInt = byteToInt(this.bextime);
 
-            remainingUses = uses - cnt;
             int timeDiff = expiryDateInt - getCurrentTime();
 
             writeHMAC();
-
 
             if (remainingUses > 0 ){
                 infoToShow = "Seconds left to use the card: " + String.valueOf(timeDiff) + "\n" + "Rides remaining: " + remainingUses;
@@ -182,29 +183,12 @@ public class Ticket {
                 infoToShow = "You are out of rides";
                 remainingUses = 0;
             }
-
-
-
-
         }
-
-
-        // Example of writing:
-
-//        counter = counter+1;
-//        System.out.println("CURRENT COUNTER "+String.valueOf(counter));
-//        byte[] counter_b = ByteBuffer.allocate(4).putInt(counter).array();
-//        System.out.println(bytesToHex(counter_b));
-//        utils.writePages(counter_b, 0, 6, 1);
-//
-//        // Set information to show for the user
-//        ByteBuffer wrapped = ByteBuffer.wrap(counter_b); // big-endian by default
-//        int cnt_int = wrapped.getInt();
-
-//        infoToShow = "Wrote: " + String.valueOf(cnt);
 
         return true;
     }
+
+
 
     private int writeExpiryTime(){
         byte[] expiryTimeBuf = new byte[4]; // big-endian by default
@@ -218,15 +202,21 @@ public class Ticket {
 
     }
 
-    private int writeIncrement(byte[] cnt, int by){
-        ByteBuffer wrapped = ByteBuffer.wrap(cnt); // big-endian by default
-        int cnt_int = wrapped.getInt();
-        cnt_int += by;
+    private void writeIncrement(){
 
-        byte[] cnt_b = ByteBuffer.allocate(4).putInt(cnt_int).array();
-        System.out.println(bytesToHex(cnt_b));
-        utils.writePages(cnt_b, 0, counter_page_no, counter_len);
-        return cnt_int;
+        byte[] mcounter = new byte[4];
+
+        mcounter[0] = (byte) 1;
+        ul.writeBinary(41, mcounter, 0);
+        remainingUses-=1;
+
+//        ByteBuffer wrapped = ByteBuffer.wrap(cnt); // big-endian by default
+//        int cnt_int = wrapped.getInt();
+//        cnt_int += by;
+//
+//        byte[] cnt_b = ByteBuffer.allocate(4).putInt(cnt_int).array();
+//        System.out.println(bytesToHex(cnt_b));
+//        utils.writePages(cnt_b, 0, counter_page_no, counter_len);
     }
 
     private byte[] readRemain(){
@@ -250,6 +240,10 @@ public class Ticket {
 
         return isExpired;
     }
+
+
+
+
 
 
     /**
@@ -277,6 +271,8 @@ public class Ticket {
 
         int timeDiff = expiryDateInt - getCurrentTime();
 
+
+
         isExpired = validateExpiryDate();
         if (isExpired) {
             Utilities.log("Card expired", true);
@@ -284,7 +280,6 @@ public class Ticket {
             return false;
         }else {
             infoToShow = "Seconds left to use the card: " + String.valueOf(timeDiff) + "\n" + "Rides remaining: " + remainingUses;
-
             }
 
 
